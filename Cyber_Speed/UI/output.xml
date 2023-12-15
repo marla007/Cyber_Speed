@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.7.7 on darwin)" generated="20231215 07:09:45.890" rpa="false" schemaversion="3">
+<suite id="s1" name="Search Books" source="/Users/maria/PycharmProjects/pythonProject/Search/TestCases/search_books.robot">
+<kw name="Browser Opened To Home Page" library="main" type="SETUP">
+<kw name="Open Browser" library="Selenium2Library">
+<arg>${HOMEPAGE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20231215 07:09:46.145" level="INFO">Opening browser 'chrome' to base url 'https://www.amazon.com/'.</msg>
+<status status="PASS" starttime="20231215 07:09:46.144" endtime="20231215 07:10:07.212"/>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20231215 07:10:07.213" endtime="20231215 07:10:08.961"/>
+</kw>
+<status status="PASS" starttime="20231215 07:09:46.144" endtime="20231215 07:10:08.961"/>
+</kw>
+<test id="s1-t1" name="Search books" line="12">
+<kw name="Search english books" library="Methods">
+<arg>${APPLE}</arg>
+<kw name="Press Keys" library="Selenium2Library">
+<arg>${ALL_SECTION_BUTTON}</arg>
+<arg>b</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20231215 07:10:08.964" level="INFO">Sending key(s) ('b',) to id=nav-search-dropdown-card element.</msg>
+<msg timestamp="20231215 07:10:18.145" level="INFO">Sending key b</msg>
+<status status="PASS" starttime="20231215 07:10:08.963" endtime="20231215 07:10:22.225"/>
+</kw>
+<kw name="Press Keys" library="Selenium2Library">
+<arg>${ALL_SECTION_BUTTON}</arg>
+<arg>b</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20231215 07:10:22.225" level="INFO">Sending key(s) ('b',) to id=nav-search-dropdown-card element.</msg>
+<msg timestamp="20231215 07:10:26.384" level="INFO">Sending key b</msg>
+<status status="PASS" starttime="20231215 07:10:22.225" endtime="20231215 07:10:28.941"/>
+</kw>
+<kw name="Press Keys" library="Selenium2Library">
+<arg>${ALL_SECTION_BUTTON}</arg>
+<arg>b</arg>
+<arg>${search_name}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20231215 07:10:28.942" level="INFO">Sending key(s) ('b', 'apple', 'RETURN') to id=nav-search-dropdown-card element.</msg>
+<msg timestamp="20231215 07:10:29.756" level="INFO">Sending key b</msg>
+<msg timestamp="20231215 07:10:30.180" level="INFO">Sending keys apple</msg>
+<msg timestamp="20231215 07:10:32.976" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20231215 07:10:32.976" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20231215 07:10:28.941" endtime="20231215 07:10:45.694"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${ENGLISH}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231215 07:10:45.694" level="INFO">Clicking element 'xpath=//*[@id="p_n_feature_nine_browse-bin/3291437011"]//div'.</msg>
+<status status="PASS" starttime="20231215 07:10:45.694" endtime="20231215 07:11:03.725"/>
+</kw>
+<status status="PASS" starttime="20231215 07:10:08.963" endtime="20231215 07:11:03.726"/>
+</kw>
+<kw name="Pagination check" library="Methods">
+<arg>${LIST}</arg>
+<arg>${NUMBER_OF_ITEMS}</arg>
+<kw name="Get Element Count" library="Selenium2Library">
+<var>${item_count}</var>
+<arg>${list}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<msg timestamp="20231215 07:11:07.501" level="INFO">${item_count} = 16</msg>
+<status status="PASS" starttime="20231215 07:11:03.726" endtime="20231215 07:11:07.501"/>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${item_count}</arg>
+<arg>${number_of_items}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<msg timestamp="20231215 07:11:07.501" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20231215 07:11:07.501" endtime="20231215 07:11:07.502"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Number of items in the list: ${item_count}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231215 07:11:07.502" endtime="20231215 07:11:07.502"/>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<var>${result_count}</var>
+<arg>${RESULTS_NUMBER}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231215 07:11:11.124" level="INFO">${result_count} = 1-16 of over 50,000 results for</msg>
+<status status="PASS" starttime="20231215 07:11:07.502" endtime="20231215 07:11:11.124"/>
+</kw>
+<kw name="Extract And Compare" library="MyLib">
+<var>${results}</var>
+<arg>${result_count}</arg>
+<msg timestamp="20231215 07:11:11.124" level="INFO">${results} = True</msg>
+<status status="PASS" starttime="20231215 07:11:11.124" endtime="20231215 07:11:11.124"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${results}' == 'True'</arg>
+<arg>Element Should Be Visible</arg>
+<arg>${NEXT_PAGE}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Element Should Be Visible" library="Selenium2Library">
+<arg>${NEXT_PAGE}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20231215 07:11:12.810" level="INFO">Element 'xpath=//*[@id="search"]//span/a[3]' is displayed.</msg>
+<status status="PASS" starttime="20231215 07:11:11.125" endtime="20231215 07:11:12.810"/>
+</kw>
+<status status="PASS" starttime="20231215 07:11:11.124" endtime="20231215 07:11:12.810"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${results}' == 'False'</arg>
+<arg>Element Should Not Be Visible</arg>
+<arg>${NEXT_PAGE}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20231215 07:11:12.810" endtime="20231215 07:11:12.810"/>
+</kw>
+<status status="PASS" starttime="20231215 07:11:03.726" endtime="20231215 07:11:12.811"/>
+</kw>
+<kw name="Sorting check by Publication date" library="Methods">
+<kw name="Click Element" library="Selenium2Library">
+<arg>${FILTER}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231215 07:11:12.811" level="INFO">Clicking element 'id=a-autoid-0'.</msg>
+<status status="PASS" starttime="20231215 07:11:12.811" endtime="20231215 07:11:14.381"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${PUBLICATION_DATE}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231215 07:11:14.381" level="INFO">Clicking element 'id=s-result-sort-select_4'.</msg>
+<status status="PASS" starttime="20231215 07:11:14.381" endtime="20231215 07:11:16.005"/>
+</kw>
+<kw name="Get WebElements" library="Selenium2Library">
+<var>${elements}</var>
+<arg>${DATE_ELEMENTS}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<msg timestamp="20231215 07:11:19.216" level="INFO">${elements} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="1a372ae0e91f618f38fdb4a9b1f90f5e", element="C1426195B7B026C84A07B74EFCC1CFDC_element_14928")&gt;, &lt;selenium.webdriver.remote.webelement.WebElem...</msg>
+<status status="PASS" starttime="20231215 07:11:16.005" endtime="20231215 07:11:19.216"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>@{dates}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231215 07:11:19.216" level="INFO">@{dates} = [ ]</msg>
+<status status="PASS" starttime="20231215 07:11:19.216" endtime="20231215 07:11:19.216"/>
+</kw>
+<for flavor="IN">
+<var>${element}</var>
+<value>@{elements}</value>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="1a372ae0e91f618f38fdb4a9b1f90f5e", element="C1426195B7B026C84A07B74EFCC1CFDC_element_14928")&gt;</var>
+<kw name="Get Text" library="Selenium2Library">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231215 07:11:19.648" level="INFO">${text} = Sep 3, 2024</msg>
+<status status="PASS" starttime="20231215 07:11:19.217" endtime="20231215 07:11:19.648"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231215 07:11:19.649" endtime="20231215 07:11:19.649"/>
+</kw>
+<status status="PASS" starttime="20231215 07:11:19.216" endtime="20231215 07:11:19.649"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="1a372ae0e91f618f38fdb4a9b1f90f5e", element="C1426195B7B026C84A07B74EFCC1CFDC_element_15044")&gt;</var>
+<kw name="Get Text" library="Selenium2Library">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231215 07:11:19.667" level="INFO">${text} = Aug 13, 2024</msg>
+<status status="PASS" starttime="20231215 07:11:19.649" endtime="20231215 07:11:19.667"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231215 07:11:19.667" endtime="20231215 07:11:19.667"/>
+</kw>
+<status status="PASS" starttime="20231215 07:11:19.649" endtime="20231215 07:11:19.667"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="1a372ae0e91f618f38fdb4a9b1f90f5e", element="C1426195B7B026C84A07B74EFCC1CFDC_element_15109")&gt;</var>
+<kw name="Get Text" library="Selenium2Library">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231215 07:11:19.690" level="INFO">${text} = Jan 1, 2024</msg>
+<status status="PASS" starttime="20231215 07:11:19.667" endtime="20231215 07:11:19.690"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231215 07:11:19.690" endtime="20231215 07:11:19.690"/>
+</kw>
+<status status="PASS" starttime="20231215 07:11:19.667" endtime="20231215 07:11:19.690"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="1a372ae0e91f618f38fdb4a9b1f90f5e", element="C1426195B7B026C84A07B74EFCC1CFDC_element_15177")&gt;</var>
+<kw name="Get Text" library="Selenium2Library">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231215 07:11:19.696" level="INFO">${text} = Jan 1, 2024</msg>
+<status status="PASS" starttime="20231215 07:11:19.690" endtime="20231215 07:11:19.696"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231215 07:11:19.696" endtime="20231215 07:11:19.696"/>
+</kw>
+<status status="PASS" starttime="20231215 07:11:19.690" endtime="20231215 07:11:19.696"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="1a372ae0e91f618f38fdb4a9b1f90f5e", element="C1426195B7B026C84A07B74EFCC1CFDC_element_15239")&gt;</var>
+<kw name="Get Text" library="Selenium2Library">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231215 07:11:19.701" level="INFO">${text} = Jan 1, 2024</msg>
+<status status="PASS" starttime="20231215 07:11:19.696" endtime="20231215 07:11:19.701"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231215 07:11:19.701" endtime="20231215 07:11:19.701"/>
+</kw>
+<status status="PASS" starttime="20231215 07:11:19.696" endtime="20231215 07:11:19.701"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="1a372ae0e91f618f38fdb4a9b1f90f5e", element="C1426195B7B026C84A07B74EFCC1CFDC_element_15301")&gt;</var>
+<kw name="Get Text" library="Selenium2Library">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231215 07:11:19.706" level="INFO">${text} = Jan 1, 2024</msg>
+<status status="PASS" starttime="20231215 07:11:19.701" endtime="20231215 07:11:19.706"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231215 07:11:19.706" endtime="20231215 07:11:19.706"/>
+</kw>
+<status status="PASS" starttime="20231215 07:11:19.701" endtime="20231215 07:11:19.706"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="1a372ae0e91f618f38fdb4a9b1f90f5e", element="C1426195B7B026C84A07B74EFCC1CFDC_element_15363")&gt;</var>
+<kw name="Get Text" library="Selenium2Library">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231215 07:11:19.711" level="INFO">${text} = Dec 11, 2023</msg>
+<status status="PASS" starttime="20231215 07:11:19.706" endtime="20231215 07:11:19.711"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231215 07:11:19.711" endtime="20231215 07:11:19.711"/>
+</kw>
+<status status="PASS" starttime="20231215 07:11:19.706" endtime="20231215 07:11:19.711"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="1a372ae0e91f618f38fdb4a9b1f90f5e", element="C1426195B7B026C84A07B74EFCC1CFDC_element_15431")&gt;</var>
+<kw name="Get Text" library="Selenium2Library">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231215 07:11:19.759" level="INFO">${text} = Dec 7, 2023</msg>
+<status status="PASS" starttime="20231215 07:11:19.711" endtime="20231215 07:11:19.759"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231215 07:11:19.759" endtime="20231215 07:11:19.759"/>
+</kw>
+<status status="PASS" starttime="20231215 07:11:19.711" endtime="20231215 07:11:19.759"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="1a372ae0e91f618f38fdb4a9b1f90f5e", element="C1426195B7B026C84A07B74EFCC1CFDC_element_15515")&gt;</var>
+<kw name="Get Text" library="Selenium2Library">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231215 07:11:19.764" level="INFO">${text} = Dec 5, 2023</msg>
+<status status="PASS" starttime="20231215 07:11:19.759" endtime="20231215 07:11:19.764"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231215 07:11:19.764" endtime="20231215 07:11:19.764"/>
+</kw>
+<status status="PASS" starttime="20231215 07:11:19.759" endtime="20231215 07:11:19.764"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="1a372ae0e91f618f38fdb4a9b1f90f5e", element="C1426195B7B026C84A07B74EFCC1CFDC_element_15606")&gt;</var>
+<kw name="Get Text" library="Selenium2Library">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231215 07:11:19.769" level="INFO">${text} = Dec 1, 2023</msg>
+<status status="PASS" starttime="20231215 07:11:19.765" endtime="20231215 07:11:19.769"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231215 07:11:19.769" endtime="20231215 07:11:19.770"/>
+</kw>
+<status status="PASS" starttime="20231215 07:11:19.765" endtime="20231215 07:11:19.770"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="1a372ae0e91f618f38fdb4a9b1f90f5e", element="C1426195B7B026C84A07B74EFCC1CFDC_element_15670")&gt;</var>
+<kw name="Get Text" library="Selenium2Library">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231215 07:11:19.774" level="INFO">${text} = Dec 1, 2023</msg>
+<status status="PASS" starttime="20231215 07:11:19.770" endtime="20231215 07:11:19.774"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231215 07:11:19.774" endtime="20231215 07:11:19.775"/>
+</kw>
+<status status="PASS" starttime="20231215 07:11:19.770" endtime="20231215 07:11:19.775"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="1a372ae0e91f618f38fdb4a9b1f90f5e", element="C1426195B7B026C84A07B74EFCC1CFDC_element_15726")&gt;</var>
+<kw name="Get Text" library="Selenium2Library">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231215 07:11:19.779" level="INFO">${text} = Nov 27, 2023</msg>
+<status status="PASS" starttime="20231215 07:11:19.775" endtime="20231215 07:11:19.779"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231215 07:11:19.779" endtime="20231215 07:11:19.780"/>
+</kw>
+<status status="PASS" starttime="20231215 07:11:19.775" endtime="20231215 07:11:19.780"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="1a372ae0e91f618f38fdb4a9b1f90f5e", element="C1426195B7B026C84A07B74EFCC1CFDC_element_15811")&gt;</var>
+<kw name="Get Text" library="Selenium2Library">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231215 07:11:19.784" level="INFO">${text} = Nov 24, 2023</msg>
+<status status="PASS" starttime="20231215 07:11:19.780" endtime="20231215 07:11:19.784"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231215 07:11:19.784" endtime="20231215 07:11:19.785"/>
+</kw>
+<status status="PASS" starttime="20231215 07:11:19.780" endtime="20231215 07:11:19.785"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="1a372ae0e91f618f38fdb4a9b1f90f5e", element="C1426195B7B026C84A07B74EFCC1CFDC_element_15864")&gt;</var>
+<kw name="Get Text" library="Selenium2Library">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231215 07:11:19.789" level="INFO">${text} = Nov 22, 2023</msg>
+<status status="PASS" starttime="20231215 07:11:19.785" endtime="20231215 07:11:19.789"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231215 07:11:19.789" endtime="20231215 07:11:19.789"/>
+</kw>
+<status status="PASS" starttime="20231215 07:11:19.785" endtime="20231215 07:11:19.789"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="1a372ae0e91f618f38fdb4a9b1f90f5e", element="C1426195B7B026C84A07B74EFCC1CFDC_element_15961")&gt;</var>
+<kw name="Get Text" library="Selenium2Library">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231215 07:11:19.794" level="INFO">${text} = Nov 21, 2023</msg>
+<status status="PASS" starttime="20231215 07:11:19.790" endtime="20231215 07:11:19.794"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231215 07:11:19.794" endtime="20231215 07:11:19.795"/>
+</kw>
+<status status="PASS" starttime="20231215 07:11:19.790" endtime="20231215 07:11:19.795"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="1a372ae0e91f618f38fdb4a9b1f90f5e", element="C1426195B7B026C84A07B74EFCC1CFDC_element_16066")&gt;</var>
+<kw name="Get Text" library="Selenium2Library">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231215 07:11:19.799" level="INFO">${text} = Nov 21, 2023</msg>
+<status status="PASS" starttime="20231215 07:11:19.795" endtime="20231215 07:11:19.799"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231215 07:11:19.799" endtime="20231215 07:11:19.800"/>
+</kw>
+<status status="PASS" starttime="20231215 07:11:19.795" endtime="20231215 07:11:19.800"/>
+</iter>
+<status status="PASS" starttime="20231215 07:11:19.216" endtime="20231215 07:11:19.800"/>
+</for>
+<kw name="Convert Dates To Sortable Format" library="Methods">
+<var>@{new_dates}</var>
+<arg>${dates}</arg>
+<kw name="Format Dates" library="MyLib">
+<var>${formatted_date}</var>
+<arg>${text}</arg>
+<msg timestamp="20231215 07:11:19.803" level="INFO">${formatted_date} = ['09/03/2024', '08/13/2024', '01/01/2024', '01/01/2024', '01/01/2024', '01/01/2024', '12/11/2023', '12/07/2023', '12/05/2023', '12/01/2023', '12/01/2023', '11/27/2023', '11/24/2023', '11/22/2023', '11...</msg>
+<status status="PASS" starttime="20231215 07:11:19.800" endtime="20231215 07:11:19.803"/>
+</kw>
+<kw name="Check And Print Sorting" library="MyLib">
+<var>${result}</var>
+<arg>${formatted_date}</arg>
+<msg timestamp="20231215 07:11:19.804" level="INFO">${result} = The list is sorted by publication date.</msg>
+<status status="PASS" starttime="20231215 07:11:19.803" endtime="20231215 07:11:19.804"/>
+</kw>
+<msg timestamp="20231215 07:11:19.804" level="INFO">@{new_dates} = [ ]</msg>
+<status status="PASS" starttime="20231215 07:11:19.800" endtime="20231215 07:11:19.804"/>
+</kw>
+<status status="PASS" starttime="20231215 07:11:12.811" endtime="20231215 07:11:19.804"/>
+</kw>
+<status status="PASS" starttime="20231215 07:10:08.961" endtime="20231215 07:11:19.804"/>
+</test>
+<kw name="Close Browser" library="Selenium2Library" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20231215 07:11:19.804" endtime="20231215 07:11:19.968"/>
+</kw>
+<status status="PASS" starttime="20231215 07:09:45.893" endtime="20231215 07:11:19.968"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Search Books">Search Books</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
